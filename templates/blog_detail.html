@@ -1,0 +1,233 @@
+{% extends "base.html" %} {% load static %}{% block content %} 
+{% include './includes/header.html' %} 
+{% comment %}
+<div class="container col-md-8 offset-md-2">
+  <h1 class="text-center">{{ post.title }}</h1>
+  <div class="card mb-4 wow fadeIn">
+    <img src="{{" post.image.url }} class="img-fluid" alt="" />
+  </div>
+
+  <p>
+    {{ post.created_on.date }} |&nbsp; Categories:&nbsp; {% for category in
+    post.categories.all %}
+
+    <a href="{% url 'blog_category' category.name %}"> {{ category.name }} </a
+    >&nbsp; {% endfor %} Tags:&nbsp; {% for tags in post.tags.all %}
+
+    <a
+      class="badge rounded-pill bg-secondary"
+      href="{% url 'blog_tag' tags.slug %}"
+    >
+      {{tags }} </a
+    >&nbsp; {% endfor %}
+  </p>
+
+  <p>{{post.get_readtime}} read</p>
+  <br />
+
+  <p>{{ post.body | safe }}</p>
+  <div class="container my-5">
+    <h3 class="my-5">Leave a comment:</h3>
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      {% if message.tags %} class=""{% endif %}>{{ message }}
+    </div>
+
+    {% endfor %} {% endif %}
+    <form action="{% url 'blog_detail' slug=post.slug %}" method="post">
+      {% csrf_token %}
+
+      <div class="form-group mb-3">{{ form.author }}</div>
+
+      <div class="form-group mb-5">{{ form.body }}</div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="my-5">
+      <h3>Comments:</h3>
+
+      {% for comment in comments %}
+
+      <p>
+        On {{comment.created_on.date }}&nbsp;
+
+        <b>{{ comment.author }}</b> wrote:
+      </p>
+
+      <p>{{ comment.body }}</p>
+
+      <hr />
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endcomment %}
+
+<section id="blog-left">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-0 col-sm-10 col-sm-offset-1">
+        <div class="blog-img row">
+          <div class="col-md-12">
+            <img
+              class="img-responsive"
+              src="{{ post.image.url }}"
+              alt=""
+            />
+          </div>
+          {% comment %} <div class="col-md-6 col-sm-6">
+            <img
+              class="img-responsive"
+              src="{{ post.image.url }}"
+              alt=""
+            />
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <img
+              class="img-responsive"
+              src="{{ post.image.url }}"
+              alt=""
+            />
+          </div> {% endcomment %}
+        </div>
+        <div class="block">
+          <span class="first-child-span">{{ post.title }}</span>
+          <span>{{post.get_readtime}} read</span>
+          <p>{{ post.body | safe }}</p>
+          Categories:&nbsp;
+
+                {% for category in post.categories.all %}
+
+                <a href="{% url 'blog_category' category.name %}">
+
+                    {{ category.name }}
+
+                </a>&nbsp;
+
+
+                {% endfor %}
+          <div class="tags">
+            Tags:&nbsp;
+
+                {% for tags in post.tags.all %}
+
+                <a class="badge rounded-pill bg-secondary" href="{% url 'blog_tag' tags.slug %}">
+
+                    {{tags }}
+
+                </a>&nbsp;
+                {% endfor %}
+          </div>
+        </div>
+        <div class="blog-comment-main">
+          <div class="blog-comment">
+            <a class="comment-img" href="#">
+              <img
+                class="img-responsive"
+                src="img/blog-details-img5.jpg"
+                alt=""
+              />
+            </a>
+            <div class="comment-text">
+              {% for comment in comments %}
+              <a class="title" href="#">{{ comment.author }}</a>
+              <span>{{comment.created_on.date }}</span>
+              <p>{{ comment.body }}</p>
+              <a class="btn" href="#">Reply</a>
+              <hr />
+              {% endfor %}
+            </div>
+          </div>
+          {% comment %}
+          <div class="sub-blog-comment">
+            <a class="comment-img" href="#">
+              <img
+                class="img-responsive"
+                src="img/blog-details-img6.jpg"
+                alt=""
+              />
+            </a>
+            <div class="comment-text">
+              <a class="title" href="#">Ray Michael</a>
+              <span>September 05th, 2015</span>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s. Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+              </p>
+              <a class="btn" href="#">Post Reply</a>
+            </div>
+          </div>
+          {% endcomment %}
+        </div>
+        <div class="addcomment">
+          <span>Leave a Comment</span>
+          {% if messages %} {% for message in messages %}
+          <div class="alert alert-danger" role="alert">
+            {% if message.tags %} class=""{% endif %}>{{ message }}
+          </div>
+
+          {% endfor %} {% endif %}
+          <div class="blog-comment-form">
+            <form action="{% url 'blog_detail' slug=post.slug %}" method="post">
+              {% csrf_token %}
+
+              <div class="form-group mb-3">{{ form.author }}</div>
+
+              <div class="form-group mb-5">{{ form.body }}</div>
+              <button class="btn btn-default" type="submit">Comment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-md-offset-1 col-sm-4">
+        <div class="widget">
+          <form>
+            <i class="fa fa-search"></i>
+            <input
+              type="text"
+              name="search"
+              class=""
+              placeholder="TYPE KEYWORD HERE..."
+            />
+          </form>
+        </div>
+        <div class="widget">
+          <span>Categories</span>
+          <div class="widget-body">
+            <ul class="category-list">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Featured Blog</a></li>
+              <li><a href="#">Photography Idea</a></li>
+              <li><a href="#">Design Tutorials</a></li>
+              <li><a href="#">News and Events</a></li>
+              <li><a href="#">Arts and Entertainment</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="widget sidebar-tags">
+          <span>Tags</span>
+          <div class="widget-body">
+            <a href="#">Advertisement</a>
+            <a href="#">Fashion</a>
+            <a href="#">Sea</a>
+            <a href="#">Forest</a>
+            <a href="#">Nature</a>
+            <a href="#">Portrait</a>
+            <a href="#">Wordpress</a>
+            <a href="#">Photo</a>
+            <a href="#">Sky</a>
+          </div>
+        </div>
+        <div class="widget">
+          <a href="#">
+            <img class="img-responsive" src="img/blog-img7.jpg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %} {% load static %}{% block content %}
+{% include './includes/header.html' %}
+<!-- Page Content -->
+<div class="container">
+
+   <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Thumbnail Gallery</h1>
+ 
+   <hr class="mt-2 mb-5">
+ 
+   <div class="row text-center text-lg-start">
+ 
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/gallery/g1.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/gallery/g2.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/gallery/g3.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/gallery/g4.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/zablon.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/beatrice.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/cherono.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/clara.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/florence.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/hillary.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/jonah.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+       <a href="#" class="d-block mb-4 h-100">
+         <img class="img-fluid img-thumbnail" src="{% static 'img/team/mercy.jpeg'%}" alt="kuppet image">
+       </a>
+     </div>
+     <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'img/team/prisca.jpeg'%}" alt="kuppet image">
+      </a>
+    </div>
+   </div>
+ 
+ </div>
+ {% include './includes/footer.html' %} 
+{% endblock content %}
